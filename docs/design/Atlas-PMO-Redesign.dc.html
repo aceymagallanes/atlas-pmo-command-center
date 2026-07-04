@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const Y=new URLSearchParams(location.search).get("theme");if(Y==="light"||Y==="dark"){document.documentElement.dataset.theme=Y}}{const Y=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const k=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(k&&k!=="normal")return;const w=(X)=>{if(!X)return null;const F=getComputedStyle(X).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!F)return null;const K=F[4]==null?1:parseFloat(F[4])/(F[4].endsWith("%")?100:1);if(K<0.99)return null;return[+F[1],+F[2],+F[3]]};const U=w(document.body)||w(document.documentElement);if(!U)return;const x=(X)=>{const F=X/255;return F<=0.04045?F/12.92:((F+0.055)/1.055)**2.4};const D=0.2126*x(U[0])+0.7152*x(U[1])+0.0722*x(U[2]);document.documentElement.style.setProperty("color-scheme",D<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")Y();else window.addEventListener("load",Y)}var _=[];var v=false;var P=30000;var h=3000;document.addEventListener("DOMContentLoaded",()=>{const Y=window.Babel;const k="om-src-id";if(Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[k])){Y.registerPlugin(k,({types:D})=>({visitor:{JSXOpeningElement(X,F){const K=X.node;if(K.name&&K.name.type==="JSXMemberExpression")return;for(let z=0;z<K.attributes.length;z++){const V=K.attributes[z];if(V.type==="JSXAttribute"&&V.name&&V.name.name==="data-om-id")return}const B=F.file&&F.file.opts&&F.file.opts.filename||"?";const A=K.loc&&K.loc.start;const J=`jsx:${B}:${K.start??0}:${A?A.line:0}:${A?A.column+1:0}`;K.attributes.push(D.jsxAttribute(D.jsxIdentifier("data-om-id"),D.stringLiteral(J)))}}}))}const w="om-text-extract";let U=false;if(v&&Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[w])){const D=window.React;if(D&&D.useSyncExternalStore&&D.createElement){U=true;const X={};const F=new Set;let K=0;window.__omTextO=X;window.__omTextSet=(J)=>{for(const z in J){const V=J[z];if(V==null)delete X[z];else X[z]=V}K++;F.forEach((z)=>z())};const B=(J)=>{F.add(J);return()=>F.delete(J)};const A=()=>K;window.__OmT=function J(z){D.useSyncExternalStore(B,A,A);return D.createElement("span",{"data-om-text":z.i,className:"__om-t"},z.i in X?X[z.i]:z.children)};Y.registerPlugin(w,({types:J})=>{const z={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const V={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const W=(Z,H)=>J.logicalExpression("??",J.memberExpression(J.logicalExpression("||",J.memberExpression(J.identifier("window"),J.identifier("__omTextO")),J.objectExpression([])),J.stringLiteral(Z),true),H);const Q=(Z)=>Z.file&&Z.file.opts&&Z.file.opts.filename||"?";const j=(Z)=>Z.file&&Z.file.code||"";const G=(Z,H)=>{const N=($)=>$&&$.start!=null&&$.end!=null&&($.type==="StringLiteral"||$.type==="TemplateLiteral"&&$.expressions.length===0)?[$.start,$.end]:null;const L=N(H);if(L)return L;if(H&&H.type==="Identifier"){const $=Z.scope.getBinding(H.name);if($&&$.constant&&$.path.node.type==="VariableDeclarator"){return N($.path.node.init)}}return null};const R=(Z,H,N)=>{const L=Z.node;let $=false;const M=(q,E)=>{$=true;return J.jsxElement(J.jsxOpeningElement(J.jsxIdentifier("__OmT"),[J.jsxAttribute(J.jsxIdentifier("i"),J.stringLiteral(q))],false),J.jsxClosingElement(J.jsxIdentifier("__OmT")),[E],false)};const C=L.children.map((q)=>{if(q.type==="JSXText"){if(q.start==null||q.end==null)return q;const E=N.slice(q.start,q.end);const f=E.length-E.trimStart().length;const I=E.length-E.trimEnd().length;if(f+I>=E.length)return q;return M(`txt:${H}:${q.start+f}:${q.end-I}`,q)}if(q.type==="JSXExpressionContainer"){const E=G(Z,q.expression);if(E)return M(`str:${H}:${E[0]}:${E[1]}`,q)}return q});if($)L.children=C};return{visitor:{JSXOpeningElement(Z,H){const N=Z.node;const L=Q(H);const $={};for(let M=0;M<N.attributes.length;M++){const C=N.attributes[M];if(C.type!=="JSXAttribute"||!C.name)continue;const q=C.name.name;if(!V[q])continue;if(!C.value||C.value.type!=="StringLiteral")continue;if(C.value.start==null||C.value.end==null)continue;const E=`txt:${L}:${C.value.start}:${C.value.end}`;$[q]=E;C.value=J.jsxExpressionContainer(W(E,J.stringLiteral(C.value.value)))}if(Object.keys($).length){N.attributes.push(J.jsxAttribute(J.jsxIdentifier("data-om-text-attrs"),J.stringLiteral(JSON.stringify($))))}},JSXElement(Z,H){const N=Z.node.openingElement;const L=N&&N.name&&N.name.name;if(L==="__OmT")return;if(typeof L==="string"&&z[L])return;R(Z,Q(H),j(H))},JSXFragment(Z,H){R(Z,Q(H),j(H))}}}})}}const x=U?["transform-react-jsx-source",k,w]:["transform-react-jsx-source",k];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((D,X)=>{const F=D.getAttribute("data-plugins")||"";const K=x.filter((B)=>F.indexOf(B)<0);if(K.length){D.setAttribute("data-plugins",F?`${F},${K.join(",")}`:K.join(","))}if(!D.hasAttribute("data-filename")){D.setAttribute("data-filename",D.getAttribute("src")||`inline-${X}`)}})});var S=window.parent;if(S&&S!==window){const Y=(J,z)=>{try{S.postMessage({__omelette_log:true,type:J,data:z},"*")}catch{}};["log","warn","error"].forEach((J)=>{const z=console[J];console[J]=(...V)=>{const W=V.map((Q)=>{try{return typeof Q==="object"?JSON.stringify(Q):String(Q)}catch{try{return String(Q)}catch{return"[unstringifiable]"}}}).join(" ");Y(J,W);z.apply(console,V)}});window.addEventListener("error",(J)=>{const z=J.target;if(z&&z!==window&&z.tagName){const V=z.src||z.href||"";Y("resource_error",`${z.tagName} failed to load: ${V}`)}else{Y("error",`${J.message||"Unknown error"} at ${J.filename||"?"}:${J.lineno||0}:${J.colno||0}`)}},true);window.addEventListener("unhandledrejection",(J)=>{const z=J.reason;const V=z instanceof Error?`${z.message} ${z.stack}`:String(z);Y("error",`Unhandled rejection: ${V}`)});const k=()=>{try{S.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(k).observe(document.documentElement);const w=()=>{k();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const J=()=>document.getElementById("root")||document.querySelector("body > div[id]");const z=J()?.firstElementChild??null;let V=0;const W=()=>{const Q=J();if(Q&&Q.firstElementChild!==z||++V>30){k();return}setTimeout(W,100)};setTimeout(W,100)};if(document.readyState==="complete")w();else window.addEventListener("load",w);const U={};let x=0;const D=(J)=>new Promise((z,V)=>{if(!_.length){V(new Error("claude.complete: no parent origin"));return}const W=`c${++x}`;const Q=()=>setTimeout(()=>{delete U[W];V(new Error(`claude.complete: no data for ${P/1000}s`))},P);const j=Q();U[W]={resolve:z,reject:V,text:"",t:j,arm:Q};try{for(const G of _){S.postMessage({__om_api:true,id:W,body:J},G)}}catch(G){clearTimeout(j);delete U[W];V(G)}});const X=8;const F=async(J,z)=>{if(!Array.isArray(J.messages)){throw new Error("claude.complete: tools require a messages array")}const V=J.messages.slice();const W={...J,tools:J.tools.map((G)=>{if(G===null||typeof G!=="object")return G;const R={};for(const Z of Object.keys(G)){if(typeof G[Z]!=="function")R[Z]=G[Z]}return R})};const Q=W.tool_choice;const j=Q!=null&&(Q.type==="any"||Q.type==="tool")?{...W,tool_choice:Q.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:Q.disable_parallel_tool_use}:{type:"auto"}}:W;for(let G=0;G<X;G++){const R=await D({...G===0?W:j,messages:V});const Z=R.message;const H=Z&&Array.isArray(Z.content)?Z.content:null;const N=H?H.filter(($)=>$?.type==="tool_use"):[];if(Z?.stop_reason!=="tool_use"||N.length===0){return R.text}const L=[];for(const $ of N){const M=z.get($.name);if(!M){L.push({type:"tool_result",tool_use_id:$.id,content:`no handler for tool "${$.name}"`,is_error:true});continue}try{const C=await M($.input);const q=typeof C==="string"?C:A(C)??"";L.push({type:"tool_result",tool_use_id:$.id,content:q})}catch(C){L.push({type:"tool_result",tool_use_id:$.id,content:String(C?.message??C??"tool handler failed"),is_error:true})}}V.push({role:"assistant",content:H},{role:"user",content:L})}throw new Error(`claude.complete: exceeded ${X} tool turns`)};window.claude={complete(J){const z=J;if(z!==null&&typeof z==="object"&&Array.isArray(z.tools)&&z.tools.some((V)=>V!==null&&typeof V==="object"&&typeof V.run==="function")){const V=new Map;for(const W of z.tools){if(W!==null&&typeof W==="object"&&typeof W.run==="function"){V.set(String(W.name),W.run)}}return F(z,V)}return D(J).then((V)=>V.text)}};const K={};let B=0;window.omelette={writeFile:(J,z)=>new Promise((V,W)=>{if(!_.length){V();return}const Q=`f${++B}`;const j=setTimeout(()=>{delete K[Q];V()},h);K[Q]={resolve:V,reject:W,t:j};try{for(const G of _){S.postMessage({__om_file:true,id:Q,op:"write",path:J,content:z},G)}}catch{clearTimeout(j);delete K[Q];V()}})};const A=(J)=>{try{return JSON.stringify(J)}catch{return JSON.stringify(String(J))}};window.addEventListener("message",(J)=>{if(_.indexOf(J.origin)<0)return;if(J.source!==S)return;const z=J.data;if(!z)return;if(z.type==="omelette-preview-refresh"){if(typeof z.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(z.token))return;const Q=Math.max(1,Math.floor((z.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+z.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+Q;return}if(z.__om_file_r){const Q=K[z.id];if(!Q)return;clearTimeout(Q.t);delete K[z.id];if(z.ok)Q.resolve();else Q.reject(new Error(z.error||"write failed"));return}if(z.__om_api_r){const Q=U[z.id];if(!Q)return;if(z.error!=null){clearTimeout(Q.t);delete U[z.id];Q.reject(new Error(z.error));return}if(z.chunk!=null){clearTimeout(Q.t);Q.t=Q.arm();Q.text+=z.chunk;return}if(z.done){clearTimeout(Q.t);delete U[z.id];Q.resolve({text:z.text!=null?z.text:Q.text,message:z.message});return}return}if(!z.__om_eval)return;const V=z;const W=(Q)=>{J.source.postMessage({...Q,__om_eval_r:1,id:V.id},J.origin)};try{const Q=(0,eval)(V.code);if(Q&&typeof Q.then==="function"){Q.then((j)=>W({ok:1,v:A(j)}),(j)=>W({ok:0,e:String(j)}))}else{W({ok:1,v:A(Q)})}}catch(Q){W({ok:0,e:String(Q)})}})}})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #F6F4F0; }
+    * { box-sizing: border-box; }
+    ::selection { background: rgba(28,122,86,0.18); }
+  </style>
+</helmet>
+
+<div style="display: flex; min-height: 100vh; font-family: Inter, system-ui, sans-serif; background: #F6F4F0; color: #17293D; -webkit-font-smoothing: antialiased;">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside style="width: 248px; flex-shrink: 0; background: {{ sbBg }}; border-right: 1px solid {{ sbBorder }}; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh;">
+    <div style="display: flex; align-items: center; gap: 12px; padding: 20px 20px 18px 20px;">
+      <div style="width: 34px; height: 34px; border-radius: 9px; background: linear-gradient(135deg, #D9B23A, #C9A227); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; color: #17293D;">A</div>
+      <div style="display: flex; flex-direction: column; gap: 1px;">
+        <div style="font-size: 14.5px; font-weight: 700; color: {{ sbText }}; letter-spacing: -0.01em;">Atlas PMO</div>
+        <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.12em; color: {{ sbMuted }};">COMMAND CENTER</div>
+      </div>
+    </div>
+
+    <nav style="display: flex; flex-direction: column; gap: 2px; padding: 8px 12px;">
+      <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; color: {{ sbMuted }}; padding: 8px 12px 6px 12px;">WORKSPACE</div>
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="4">
+        <button onClick="{{ item.onClick }}" style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; border: none; cursor: pointer; text-align: left; font-family: inherit; font-size: 13.5px; font-weight: {{ item.weight }}; background: {{ item.bg }}; color: {{ item.color }}; width: 100%;" style-hover="background: {{ item.hoverBg }};">
+          <span style="width: 6px; height: 6px; border-radius: 2px; background: {{ item.dot }}; flex-shrink: 0;"></span>
+          <span>{{ item.label }}</span>
+        </button>
+      </sc-for>
+    </nav>
+
+    <nav style="display: flex; flex-direction: column; gap: 2px; padding: 12px 12px;">
+      <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; color: {{ sbMuted }}; padding: 8px 12px 6px 12px;">PER-PROJECT TOOLS</div>
+      <sc-for list="{{ toolItems }}" as="item" hint-placeholder-count="2">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; font-weight: 500; color: {{ item.color }}; cursor: default;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: {{ item.dot }}; flex-shrink: 0;"></span>
+          <span>{{ item.label }}</span>
+        </div>
+      </sc-for>
+      <div style="font-size: 12px; line-height: 1.55; color: {{ sbMuted }}; padding: 10px 12px 0 12px;">Open any project to access its tasks, RAID log, meeting notes and reports.</div>
+    </nav>
+
+    <div style="margin-top: auto; padding: 16px 20px; border-top: 1px solid {{ sbBorder }}; display: flex; align-items: center; gap: 10px;">
+      <div style="width: 30px; height: 30px; border-radius: 50%; background: #1C7A56; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600;">PM</div>
+      <div style="display: flex; flex-direction: column;">
+        <div style="font-size: 12.5px; font-weight: 600; color: {{ sbText }};">Priya Mehta</div>
+        <div style="font-size: 11px; color: {{ sbMuted }};">PMO Lead</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column;">
+
+    <!-- Topbar -->
+    <header style="height: 64px; flex-shrink: 0; background: #FFFFFF; border-bottom: 1px solid #E9E4DB; display: flex; align-items: center; padding: 0 32px; gap: 16px; position: sticky; top: 0; z-index: 10;">
+      <div style="flex: 1; max-width: 520px; display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 14px; border-radius: 10px; background: #F6F4F0; border: 1px solid #E9E4DB; color: #7A8699;">
+        <span style="width: 12px; height: 12px; border: 1.5px solid #97A1B0; border-radius: 50%; position: relative; display: inline-block; flex-shrink: 0;"></span>
+        <span style="font-size: 13px;">Search projects, risks, tasks…</span>
+        <span style="margin-left: auto; font-size: 11px; font-weight: 600; color: #97A1B0; border: 1px solid #E1DBD0; border-radius: 5px; padding: 2px 6px; background: #fff;">⌘K</span>
+      </div>
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 12px;">
+        <button style="height: 38px; padding: 0 18px; border-radius: 10px; border: none; cursor: pointer; background: #1C7A56; color: #FFFFFF; font-family: inherit; font-size: 13.5px; font-weight: 600; display: flex; align-items: center; gap: 8px;" style-hover="background: #166647;">
+          <span style="font-size: 16px; font-weight: 500; line-height: 1;">+</span> New Project
+        </button>
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #17293D; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600;">PM</div>
+      </div>
+    </header>
+
+    <!-- ============ DASHBOARD PAGE ============ -->
+    <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ true }}">
+      <main data-screen-label="Home Dashboard" style="padding: 40px 32px 64px 32px;">
+        <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px;">
+
+          <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: #1C7A56;">COMMAND CENTER</div>
+              <h1 style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: #17293D;">Portfolio at a Glance</h1>
+              <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #66707F; max-width: 560px;">Your single view across every project — health, risks, decisions and what needs attention today.</p>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 500; color: #7A8699; white-space: nowrap; padding-bottom: 4px;">Wednesday, Jul 2 · Updated 6:20 AM</div>
+          </div>
+
+          <!-- KPI grid: 5 × 2 -->
+          <section style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">
+            <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="10">
+              <div style="background: #FFFFFF; border: 1px solid #E9E4DB; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; min-height: 118px;">
+                <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #7A8699; text-transform: uppercase;">{{ k.label }}</div>
+                <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; color: {{ k.color }};">{{ k.value }}</div>
+                <div style="font-size: 12px; font-weight: 500; color: #97A1B0; margin-top: auto;">{{ k.sub }}</div>
+              </div>
+            </sc-for>
+          </section>
+
+          <!-- Health + Attention -->
+          <section style="display: grid; grid-template-columns: 380px 1fr; gap: 16px; align-items: stretch;">
+
+            <div style="background: #FFFFFF; border: 1px solid #E9E4DB; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+              <div style="display: flex; flex-direction: column; gap: 3px;">
+                <div style="font-size: 15px; font-weight: 700; color: #17293D;">Portfolio Health</div>
+                <div style="font-size: 12.5px; color: #7A8699;">RAG distribution across active projects</div>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: center; flex: 1;">
+                <div style="position: relative; width: 180px; height: 180px;">
+                  <svg width="180" height="180" viewBox="0 0 180 180" style="transform: rotate(-90deg);">
+                    <circle cx="90" cy="90" r="72" fill="none" stroke="#EFECE5" stroke-width="18"></circle>
+                    <circle cx="90" cy="90" r="72" fill="none" stroke="#1C7A56" stroke-width="18" stroke-dasharray="271.4 452.4" stroke-dashoffset="0" stroke-linecap="butt"></circle>
+                    <circle cx="90" cy="90" r="72" fill="none" stroke="#C9A227" stroke-width="18" stroke-dasharray="90.5 452.4" stroke-dashoffset="-271.4"></circle>
+                    <circle cx="90" cy="90" r="72" fill="none" stroke="#BE3E32" stroke-width="18" stroke-dasharray="90.5 452.4" stroke-dashoffset="-361.9"></circle>
+                  </svg>
+                  <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;">
+                    <div style="font-size: 34px; font-weight: 700; letter-spacing: -0.02em; color: #17293D; line-height: 1;">5</div>
+                    <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; color: #97A1B0;">PROJECTS</div>
+                  </div>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                <sc-for list="{{ ragLegend }}" as="r" hint-placeholder-count="3">
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 8px; border-radius: 10px; background: #FAF8F4; border: 1px solid #EFECE5;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                      <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ r.color }};"></span>
+                      <span style="font-size: 16px; font-weight: 700; color: #17293D;">{{ r.count }}</span>
+                    </div>
+                    <div style="font-size: 11px; font-weight: 500; color: #7A8699;">{{ r.label }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1px solid #E9E4DB; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+              <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+                <div style="display: flex; flex-direction: column; gap: 3px;">
+                  <div style="font-size: 15px; font-weight: 700; color: #17293D;">Projects Needing Attention</div>
+                  <div style="font-size: 12.5px; color: #7A8699;">Prioritised by health, overdue work, risks and pending decisions</div>
+                </div>
+                <button onClick="{{ goPortfolio }}" style="flex-shrink: 0; height: 32px; padding: 0 14px; border-radius: 8px; border: 1px solid #E1DBD0; background: #FFFFFF; cursor: pointer; font-family: inherit; font-size: 12.5px; font-weight: 600; color: #17293D;" style-hover="background: #FAF8F4;">View portfolio</button>
+              </div>
+              <div style="display: flex; flex-direction: column; flex: 1;">
+                <sc-for list="{{ attention }}" as="p" hint-placeholder-count="4">
+                  <div style="display: flex; align-items: center; gap: 16px; padding: 14px 4px; border-top: 1px solid #F0EDE6; flex: 1; cursor: pointer;" style-hover="background: #FAF8F4;">
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ p.dotColor }}; flex-shrink: 0;"></span>
+                    <div style="display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1;">
+                      <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 14px; font-weight: 600; color: #17293D;">{{ p.name }}</span>
+                        <span style="font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: {{ p.badgeBg }}; color: {{ p.badgeColor }}; white-space: nowrap;">{{ p.status }}</span>
+                      </div>
+                      <div style="font-size: 12.5px; color: #7A8699; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ p.summary }}</div>
+                    </div>
+                    <span style="font-size: 16px; color: #97A1B0; flex-shrink: 0;">→</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </section>
+
+          <!-- Milestones -->
+          <sc-if value="{{ showMilestones }}" hint-placeholder-val="{{ true }}">
+            <section style="background: #FFFFFF; border: 1px solid #E9E4DB; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+              <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+                <div style="display: flex; flex-direction: column; gap: 3px;">
+                  <div style="font-size: 15px; font-weight: 700; color: #17293D;">Upcoming Milestones</div>
+                  <div style="font-size: 12.5px; color: #7A8699;">Across the whole portfolio, next 30 days</div>
+                </div>
+                <span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #F3F0E7; color: #8A6D1C;">7 upcoming</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 96px 1fr 1fr 110px; gap: 0 20px; align-items: center;">
+                <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; color: #97A1B0; padding: 6px 0;">DATE</div>
+                <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; color: #97A1B0; padding: 6px 0;">MILESTONE</div>
+                <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; color: #97A1B0; padding: 6px 0;">PROJECT</div>
+                <div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; color: #97A1B0; padding: 6px 0; text-align: right;">HEALTH</div>
+              </div>
+              <div style="display: flex; flex-direction: column; margin-top: -12px;">
+                <sc-for list="{{ milestones }}" as="m" hint-placeholder-count="7">
+                  <div style="display: grid; grid-template-columns: 96px 1fr 1fr 110px; gap: 0 20px; align-items: center; padding: 12px 0; border-top: 1px solid #F0EDE6;">
+                    <div style="font-size: 12.5px; font-weight: 600; color: #17293D;">{{ m.date }}</div>
+                    <div style="font-size: 13.5px; font-weight: 500; color: #17293D;">{{ m.title }}</div>
+                    <div style="font-size: 12.5px; color: #7A8699;">{{ m.project }}</div>
+                    <div style="display: flex; justify-content: flex-end;">
+                      <span style="font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: {{ m.badgeBg }}; color: {{ m.badgeColor }}; white-space: nowrap;">{{ m.status }}</span>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </section>
+          </sc-if>
+
+        </div>
+      </main>
+    </sc-if>
+
+    <!-- ============ PORTFOLIO PAGE ============ -->
+    <sc-if value="{{ isPortfolio }}" hint-placeholder-val="{{ false }}">
+      <main data-screen-label="Portfolio" style="padding: 40px 32px 64px 32px;">
+        <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px;">
+
+          <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: #1C7A56;">PORTFOLIO</div>
+              <h1 style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: #17293D;">All Projects</h1>
+              <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #66707F;">5 active projects across the portfolio.</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding-bottom: 4px;">
+              <sc-for list="{{ ragLegend }}" as="r" hint-placeholder-count="3">
+                <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #66707F; padding: 5px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E9E4DB;">
+                  <span style="width: 7px; height: 7px; border-radius: 50%; background: {{ r.color }};"></span>{{ r.count }} {{ r.label }}
+                </span>
+              </sc-for>
+            </div>
+          </div>
+
+          <section style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch;">
+            <sc-for list="{{ projects }}" as="p" hint-placeholder-count="5">
+              <article style="background: #FFFFFF; border: 1px solid #E9E4DB; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 16px;" style-hover="border-color: #D9D2C4; box-shadow: 0 2px 12px rgba(23,41,61,0.06);">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                  <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; color: #97A1B0; text-transform: uppercase;">{{ p.category }}</span>
+                  <span style="font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: {{ p.badgeBg }}; color: {{ p.badgeColor }}; white-space: nowrap; display: inline-flex; align-items: center; gap: 5px;">
+                    <span style="width: 6px; height: 6px; border-radius: 50%; background: {{ p.dotColor }};"></span>{{ p.status }}
+                  </span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                  <div style="font-size: 16.5px; font-weight: 700; letter-spacing: -0.01em; color: #17293D;">{{ p.name }}</div>
+                  <div style="font-size: 13px; line-height: 1.55; color: #66707F; min-height: 40px;">{{ p.description }}</div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 7px;">
+                  <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600;">
+                    <span style="color: #7A8699;">Progress</span>
+                    <span style="color: #17293D;">{{ p.progressLabel }}</span>
+                  </div>
+                  <div style="height: 6px; border-radius: 999px; background: #EFECE5; overflow: hidden;">
+                    <div style="height: 100%; border-radius: 999px; background: {{ p.dotColor }}; width: {{ p.progressLabel }};"></div>
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: auto;">
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 6px; border-radius: 10px; background: #FAF8F4; border: 1px solid #EFECE5;">
+                    <span style="font-size: 15px; font-weight: 700; color: {{ p.overdueColor }};">{{ p.overdue }}</span>
+                    <span style="font-size: 10.5px; font-weight: 500; color: #97A1B0;">Overdue</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 6px; border-radius: 10px; background: #FAF8F4; border: 1px solid #EFECE5;">
+                    <span style="font-size: 15px; font-weight: 700; color: #17293D;">{{ p.risks }}</span>
+                    <span style="font-size: 10.5px; font-weight: 500; color: #97A1B0;">Risks</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 6px; border-radius: 10px; background: #FAF8F4; border: 1px solid #EFECE5;">
+                    <span style="font-size: 15px; font-weight: 700; color: #17293D;">{{ p.decisions }}</span>
+                    <span style="font-size: 10.5px; font-weight: 500; color: #97A1B0;">Decisions</span>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 1px solid #F0EDE6;">
+                  <div style="display: flex; flex-direction: column; gap: 1px;">
+                    <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; color: #97A1B0;">GO-LIVE</span>
+                    <span style="font-size: 13px; font-weight: 600; color: #17293D;">{{ p.goLive }}</span>
+                  </div>
+                  <button style="height: 32px; padding: 0 14px; border-radius: 8px; border: 1px solid #E1DBD0; background: #FFFFFF; cursor: pointer; font-family: inherit; font-size: 12.5px; font-weight: 600; color: #1C7A56;" style-hover="background: #F0F6F3; border-color: #BCD6CB;">Open project →</button>
+                </div>
+              </article>
+            </sc-for>
+          </section>
+
+        </div>
+      </main>
+    </sc-if>
+
+    <!-- ============ START NEW PROJECT PAGE ============ -->
+    <sc-if value="{{ isNew }}" hint-placeholder-val="{{ false }}">
+      <main data-screen-label="Start New Project" style="padding: 40px 32px 64px 32px;">
+        <div style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px;">
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: #1C7A56;">WORKSPACE</div>
+            <h1 style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: #17293D;">Start New Project</h1>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #66707F;">Set up the essentials — you can refine tasks, risks and milestones once the project exists.</p>
+          </div>
+
+          <section style="background: #FFFFFF; border: 1px solid #E9E4DB; border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <sc-for list="{{ newProjectFields }}" as="f" hint-placeholder-count="6">
+                <label style="display: flex; flex-direction: column; gap: 7px; grid-column: {{ f.span }};">
+                  <span style="font-size: 12.5px; font-weight: 600; color: #17293D;">{{ f.label }}</span>
+                  <span style="display: flex; align-items: flex-start; padding: 0 14px; border-radius: 10px; border: 1px solid #E1DBD0; background: #FAF8F4; color: #97A1B0; font-size: 13.5px; height: {{ f.height }}; padding-top: {{ f.padTop }};">{{ f.placeholder }}</span>
+                </label>
+              </sc-for>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <span style="font-size: 12.5px; font-weight: 600; color: #17293D;">Initial health</span>
+              <div style="display: flex; gap: 8px;">
+                <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 8px 16px; border-radius: 999px; background: #E7F1EC; color: #1C7A56; border: 1px solid #BCD6CB;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #1C7A56;"></span>On Track</span>
+                <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 8px 16px; border-radius: 999px; background: #FFFFFF; color: #66707F; border: 1px solid #E1DBD0;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #C9A227;"></span>At Risk</span>
+                <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 8px 16px; border-radius: 999px; background: #FFFFFF; color: #66707F; border: 1px solid #E1DBD0;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #BE3E32;"></span>Off Track</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding-top: 20px; border-top: 1px solid #F0EDE6;">
+              <button onClick="{{ goDashboard }}" style="height: 40px; padding: 0 18px; border-radius: 10px; border: 1px solid #E1DBD0; background: #FFFFFF; cursor: pointer; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #17293D;" style-hover="background: #FAF8F4;">Cancel</button>
+              <button style="height: 40px; padding: 0 20px; border-radius: 10px; border: none; cursor: pointer; background: #1C7A56; color: #FFFFFF; font-family: inherit; font-size: 13.5px; font-weight: 600;" style-hover="background: #166647;">Create project</button>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </sc-if>
+
+    <!-- ============ SETTINGS PAGE ============ -->
+    <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+      <main data-screen-label="Settings" style="padding: 40px 32px 64px 32px;">
+        <div style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px;">
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: #1C7A56;">WORKSPACE</div>
+            <h1 style="margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: #17293D;">Settings</h1>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #66707F;">Workspace identity, portfolio health rules and notifications.</p>
+          </div>
+
+          <sc-for list="{{ settingsSections }}" as="sec" hint-placeholder-count="3">
+            <section style="background: #FFFFFF; border: 1px solid #E9E4DB; border-radius: 14px; padding: 28px 32px; display: flex; flex-direction: column; gap: 4px;">
+              <div style="display: flex; flex-direction: column; gap: 3px; padding-bottom: 14px;">
+                <div style="font-size: 15px; font-weight: 700; color: #17293D;">{{ sec.title }}</div>
+                <div style="font-size: 12.5px; color: #7A8699;">{{ sec.desc }}</div>
+              </div>
+              <sc-for list="{{ sec.rows }}" as="row" hint-placeholder-count="3">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 13px 0; border-top: 1px solid #F0EDE6;">
+                  <span style="font-size: 13.5px; font-weight: 500; color: #17293D;">{{ row.label }}</span>
+                  <sc-if value="{{ row.isText }}" hint-placeholder-val="{{ true }}">
+                    <span style="font-size: 13px; color: #66707F;">{{ row.value }}</span>
+                  </sc-if>
+                  <sc-if value="{{ row.isToggle }}" hint-placeholder-val="{{ false }}">
+                    <span style="width: 38px; height: 22px; border-radius: 999px; background: {{ row.trackBg }}; position: relative; display: inline-block; flex-shrink: 0;">
+                      <span style="position: absolute; top: 2px; left: {{ row.knobShift }}; width: 18px; height: 18px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 1px 2px rgba(23,41,61,0.2);"></span>
+                    </span>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </section>
+          </sc-for>
+
+        </div>
+      </main>
+    </sc-if>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;sidebarTone&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Deep navy&quot;, &quot;Warm light&quot;], &quot;default&quot;: &quot;Deep navy&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Theme&quot; },
+  &quot;showMilestones&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Dashboard&quot; }
+}">
+class Component extends DCLogic {
+  state = { page: "dashboard" };
+
+  renderVals() {
+    const page = this.state.page;
+    const light = (this.props.sidebarTone ?? "Deep navy") === "Warm light";
+
+    // Status token map
+    const S = {
+      "On Track":  { color: "#1C7A56", bg: "#E7F1EC" },
+      "At Risk":   { color: "#8A6D1C", bg: "#F5EFDC", dot: "#C9A227" },
+      "Off Track": { color: "#A33228", bg: "#F7E7E4", dot: "#BE3E32" },
+    };
+    const badge = (status) => ({
+      status,
+      badgeBg: S[status].bg,
+      badgeColor: S[status].color,
+      dotColor: S[status].dot || S[status].color,
+    });
+
+    // Sidebar theme
+    const sb = light
+      ? { bg: "#FFFFFF", border: "#E9E4DB", text: "#17293D", muted: "#97A1B0", idle: "#4C5A6D", activeBg: "#EDF4F0", activeColor: "#1C7A56", hover: "#F6F4F0" }
+      : { bg: "#0E2033", border: "#1D3349", text: "#F3F1EC", muted: "#6C8199", idle: "#B8C4D2", activeBg: "#1A3450", activeColor: "#FFFFFF", hover: "rgba(255,255,255,0.06)" };
+
+    const nav = (label, key, action) => ({
+      label,
+      onClick: () => { if (key) this.setState({ page: key }); },
+      bg: page === key ? sb.activeBg : "transparent",
+      color: page === key ? sb.activeColor : sb.idle,
+      weight: page === key ? 600 : 500,
+      dot: page === key ? "#1C7A56" : (light ? "#D9D2C4" : "#33465C"),
+      hoverBg: page === key ? sb.activeBg : sb.hover,
+    });
+
+    const navItems = [
+      nav("Home Dashboard", "dashboard"),
+      nav("Portfolio", "portfolio"),
+      nav("Start New Project", "new"),
+      nav("Settings", "settings"),
+    ];
+    const toolItems = [
+      { label: "RAID Log", color: sb.idle, dot: light ? "#D9D2C4" : "#33465C" },
+      { label: "Status Reports", color: sb.idle, dot: light ? "#D9D2C4" : "#33465C" },
+    ];
+
+    const ink = "#17293D", green = "#1C7A56", amber = "#B07E14", red = "#BE3E32";
+    const kpis = [
+      { label: "Active Projects", value: "5", sub: "Across 4 departments", color: ink },
+      { label: "On Track", value: "3", sub: "60% of portfolio", color: green },
+      { label: "At Risk", value: "1", sub: "Needs monitoring", color: amber },
+      { label: "Off Track", value: "1", sub: "Escalated", color: red },
+      { label: "Overdue Tasks", value: "5", sub: "Across 2 projects", color: red },
+      { label: "Critical Risks", value: "6", sub: "High severity open", color: red },
+      { label: "Open Issues", value: "2", sub: "Awaiting owners", color: ink },
+      { label: "Sponsor Decisions", value: "3", sub: "Pending sign-off", color: amber },
+      { label: "Reports Due", value: "5", sub: "This week", color: ink },
+      { label: "Upcoming Milestones", value: "7", sub: "Next 30 days", color: ink },
+    ];
+
+    const ragLegend = [
+      { label: "On Track", count: 3, color: green },
+      { label: "At Risk", count: 1, color: "#C9A227" },
+      { label: "Off Track", count: 1, color: red },
+    ];
+
+    const attention = [
+      { name: "Finance Reporting Automation", ...badge("Off Track"), summary: "Red health · 3 overdue tasks · 2 critical/high risks · 2 sponsor decisions pending" },
+      { name: "Customer 360 CRM Rollout", ...badge("At Risk"), summary: "Amber health · 2 overdue tasks · 1 critical/high risk · 1 sponsor decision pending" },
+      { name: "Sales Ops AI Assistant", ...badge("On Track"), summary: "2 critical/high risks" },
+      { name: "Onboarding Process Redesign", ...badge("On Track"), summary: "1 critical/high risk" },
+    ];
+
+    const milestones = [
+      { date: "Jul 08", title: "UAT sign-off", project: "Customer 360 CRM Rollout", ...badge("At Risk") },
+      { date: "Jul 11", title: "Data migration dry run", project: "Data Warehouse Migration", ...badge("On Track") },
+      { date: "Jul 15", title: "Phase 2 go / no-go", project: "Finance Reporting Automation", ...badge("Off Track") },
+      { date: "Jul 18", title: "Pilot cohort launch", project: "Onboarding Process Redesign", ...badge("On Track") },
+      { date: "Jul 22", title: "Model evaluation review", project: "Sales Ops AI Assistant", ...badge("On Track") },
+      { date: "Jul 25", title: "Exec steering committee", project: "Portfolio-wide", ...badge("On Track") },
+      { date: "Jul 30", title: "Vendor contract renewal", project: "Customer 360 CRM Rollout", ...badge("At Risk") },
+    ];
+
+    const projects = [
+      { name: "Finance Reporting Automation", category: "Finance", ...badge("Off Track"),
+        description: "Automating month-end close reporting and consolidations across three entities.",
+        progressLabel: "42%", overdue: 3, risks: 2, decisions: 2, goLive: "Sep 12, 2026", overdueColor: red },
+      { name: "Customer 360 CRM Rollout", category: "Sales & Marketing", ...badge("At Risk"),
+        description: "Single customer view rollout across sales, service and marketing teams.",
+        progressLabel: "58%", overdue: 2, risks: 1, decisions: 1, goLive: "Oct 03, 2026", overdueColor: red },
+      { name: "Sales Ops AI Assistant", category: "Revenue Ops", ...badge("On Track"),
+        description: "AI assistant for pipeline hygiene, forecast prep and deal-desk requests.",
+        progressLabel: "71%", overdue: 0, risks: 2, decisions: 0, goLive: "Aug 21, 2026", overdueColor: ink },
+      { name: "Onboarding Process Redesign", category: "People Ops", ...badge("On Track"),
+        description: "Redesigned 30-day onboarding journey for new hires and managers.",
+        progressLabel: "64%", overdue: 0, risks: 1, decisions: 0, goLive: "Sep 30, 2026", overdueColor: ink },
+      { name: "Data Warehouse Migration", category: "IT & Data", ...badge("On Track"),
+        description: "Migration from legacy warehouse to cloud-native lakehouse platform.",
+        progressLabel: "35%", overdue: 0, risks: 0, decisions: 0, goLive: "Nov 14, 2026", overdueColor: ink },
+    ];
+
+    const newProjectFields = [
+      { label: "Project name", placeholder: "e.g. Vendor Portal Modernisation", wide: true },
+      { label: "Category", placeholder: "Finance, IT & Data, People Ops…", wide: false },
+      { label: "Executive sponsor", placeholder: "Name of the accountable sponsor", wide: false },
+      { label: "Project manager", placeholder: "Who runs this day to day", wide: false },
+      { label: "Target go-live", placeholder: "Select a date", wide: false },
+      { label: "Description", placeholder: "One or two sentences on the outcome this project delivers", wide: true, tall: true },
+    ].map((f) => ({
+      ...f,
+      span: f.wide ? "1 / -1" : "auto",
+      height: f.tall ? "96px" : "42px",
+      padTop: f.tall ? "12px" : "11px",
+    }));
+
+    const settingsSections = [
+      {
+        title: "Workspace",
+        desc: "Identity shown across reports and exports",
+        rows: [
+          { label: "Workspace name", value: "Atlas PMO — Operations", kind: "text" },
+          { label: "Default report cadence", value: "Weekly, due Fridays", kind: "text" },
+          { label: "Fiscal year start", value: "January", kind: "text" },
+        ],
+      },
+      {
+        title: "Portfolio health rules",
+        desc: "How RAG status is derived for each project",
+        rows: [
+          { label: "Auto-flag At Risk", value: "2+ overdue tasks or 1 critical risk", kind: "text" },
+          { label: "Auto-flag Off Track", value: "Missed milestone or red sponsor escalation", kind: "text" },
+          { label: "Health recalculation", value: "Daily at 6:00 AM", kind: "text" },
+        ],
+      },
+      {
+        title: "Notifications",
+        desc: "What lands in your inbox and when",
+        rows: [
+          { label: "Weekly portfolio digest", value: "On", kind: "toggle", on: true },
+          { label: "Milestone reminders", value: "On", kind: "toggle", on: true },
+          { label: "Risk escalation alerts", value: "On", kind: "toggle", on: true },
+          { label: "Comment mentions", value: "Off", kind: "toggle", on: false },
+        ].map((r) => ({ ...r })),
+      },
+    ].map((sec) => ({
+      ...sec,
+      rows: sec.rows.map((r) => ({
+        ...r,
+        isToggle: r.kind === "toggle",
+        isText: r.kind !== "toggle",
+        trackBg: r.on ? "#1C7A56" : "#D9D2C4",
+        knobShift: r.on ? "18px" : "2px",
+      })),
+    }));
+
+    const _settingsUnused = [
+      {
+        rows: [
+        ],
+      },
+    ];
+
+    return {
+      isDashboard: page === "dashboard",
+      isPortfolio: page === "portfolio",
+      isNew: page === "new",
+      isSettings: page === "settings",
+      newProjectFields, settingsSections,
+      goDashboard: () => this.setState({ page: "dashboard" }),
+      goPortfolio: () => this.setState({ page: "portfolio" }),
+      showMilestones: this.props.showMilestones ?? true,
+      sbBg: sb.bg, sbBorder: sb.border, sbText: sb.text, sbMuted: sb.muted,
+      navItems, toolItems, kpis, ragLegend, attention, milestones, projects,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -3,25 +3,61 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* next/font sets --font-sans on <html>; fall back to a native UI stack. */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+    sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #f6f4f0;
+  color: #17293d;
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(28, 122, 86, 0.18);
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-head {
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+}
+
+/* Thin, executive scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d9d2c4;
+  border-radius: 8px;
+  border: 2px solid #f6f4f0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c8c0af;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  /* Consistent metadata / eyebrow label.
+     Named `.eyebrow` (not `.overline`) to avoid colliding with Tailwind's
+     built-in `.overline` text-decoration utility. */
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 1.4;
+    text-decoration: none;
   }
 }
